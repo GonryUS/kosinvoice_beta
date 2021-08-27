@@ -4,9 +4,9 @@ import pandas as pd
 
 def pega_fatura(arquivo):
     try:
-        path=pd.read_excel(arquivo)
+        path=pd.read_excel(arquivo, encoding = 'unicode_escape')
     except Exception as e:
-        path=pd.read_csv(arquivo)
+        path=pd.read_csv(arquivo, encoding = 'unicode_escape')
     return path
 
 st.set_page_config(
