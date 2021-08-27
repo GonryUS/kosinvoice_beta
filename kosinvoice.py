@@ -4,9 +4,9 @@ import pandas as pd
 
 def pega_fatura(arquivo):
     try:
-        path=pd.read_excel(arquivo)
+        path=pd.read_excel(arquivo, encoding='iso8859-1')
     except Exception as e:
-        path=pd.read_csv(arquivo)
+        path=pd.read_csv(arquivo, encoding='iso8859-1')
     return path
 
 st.set_page_config(
@@ -34,6 +34,5 @@ if upload :
     st.dataframe(fat_val.groupby(['Plano']).agg({'Minutos':'sum','Valor':'sum','Tarifa':'mean'}).style.set_precision(2))
     st.write(" *Valor médio por minuto* ")
     st.dataframe(fat_val.groupby(['Plano']).mean().style.set_precision(2))
-    st.area_chart(tax)
 else :
     st.write(" *Insira sua fatura* ")
