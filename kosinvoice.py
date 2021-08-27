@@ -11,7 +11,7 @@ def pega_fatura(arquivo):
 
 st.set_page_config(
     page_title="KOS INVOICE",
-    page_icon="🥳",
+    page_icon='$$$',
     initial_sidebar_state="expanded",
 )
 st.title(
