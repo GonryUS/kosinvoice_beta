@@ -20,7 +20,7 @@ st.title(
     ''')
 st.header(" Fatura ")
 
-upload=st.file_uploader(label='Clique aqui para inserir sua fatura', type=['csv','xlsx'])
+upload=st.file_uploader(label='Clique aqui para inserir sua fatura', type=['csv','xlsx','xlsb'])
 if upload :
     fat=pega_fatura(upload)
     fat_val=pd.DataFrame(fat,columns=['Unnamed: 12','Min','Val_S_Imp'])
