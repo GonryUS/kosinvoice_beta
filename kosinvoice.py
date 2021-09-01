@@ -23,7 +23,7 @@ st.header(" Fatura ")
 upload=st.file_uploader(label='Clique aqui para inserir sua fatura', type=['csv','xlsx','xlsb'])
 if upload :
     fat=pega_fatura(upload)
-    num_select = st.selectbox('Select', [fat.Ass_B.unique()])
+    num_select = st.selectbox('Select', fat.Ass_B.unique())
     fat_val=pd.DataFrame(fat.loc[fat.Ass_B == num_select],columns=['Unnamed: 12','Min','Val_S_Imp'])
     fat_val.columns=['Plano','Minutos','Valor'] 
     fat_val['Tarifa']=fat_val.Valor/fat_val.Minutos.values
