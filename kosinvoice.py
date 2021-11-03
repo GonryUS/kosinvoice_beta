@@ -22,7 +22,7 @@ if upload :
       submit_button = st.form_submit_button(label='Aplicar')
     if submit_button :
       try:
-        fat_val=pd.DataFrame(fat.loc[fat.EQPTO_ORIG == num_select],columns=['Unnamed: 12','Min','Val_S_Imp'])
+        fat_val=pd.DataFrame(fat.loc[fat.EQPTO_ORIG == num_select],columns=['DESC_ITEM','QTDE_MEDIDA','VALOR_SEM_IMP'])
         fat_val.columns=['Plano','Minutos','Valor']
       except:
         fat_val=pd.DataFrame(fat.loc[fat.Ass_B == num_select],columns=['Unnamed: 12','Min','Val_S_Imp'])
