@@ -14,8 +14,12 @@ upload=st.file_uploader(label='Clique aqui para inserir sua fatura', type=['csv'
 if upload :
   fat=pega_fatura(upload)
   with st.form(key='my_form'):
-    num_select = st.selectbox('Qual número deseja consultar?', fat.Ass_B.unique())
-    submit_button = st.form_submit_button(label='Aplicar')
+    if fat.EQPTO_ORIG():
+      num_select = st.selectbox('Qual número deseja consultar?', fat.EQPTO_ORIG())
+      submit_button = st.form_submit_button(label='Aplicar')
+    else:
+      num_select = st.selectbox('Qual número deseja consultar?', fat.Ass_B.unique())
+      submit_button = st.form_submit_button(label='Aplicar')
     if submit_button :
       fat_val=pd.DataFrame(fat.loc[fat.Ass_B == num_select],columns=['Unnamed: 12','Min','Val_S_Imp'])
       fat_val.columns=['Plano','Minutos','Valor'] 
