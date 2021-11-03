@@ -21,8 +21,12 @@ if upload :
       num_select = st.selectbox('Qual número deseja consultar?', fat.Ass_B.unique())
       submit_button = st.form_submit_button(label='Aplicar')
     if submit_button :
-      fat_val=pd.DataFrame(fat.loc[fat.Ass_B == num_select],columns=['Unnamed: 12','Min','Val_S_Imp'])
-      fat_val.columns=['Plano','Minutos','Valor'] 
+      try:
+        fat_val=pd.DataFrame(fat.loc[fat.EQPTO_ORIG == num_select],columns=['Unnamed: 12','Min','Val_S_Imp'])
+        fat_val.columns=['Plano','Minutos','Valor']
+      except:
+        fat_val=pd.DataFrame(fat.loc[fat.Ass_B == num_select],columns=['Unnamed: 12','Min','Val_S_Imp'])
+        fat_val.columns=['Plano','Minutos','Valor'] 
       fat_val['Tarifa']=fat_val.Valor/fat_val.Minutos.values
       tax=pd.DataFrame(fat_val,columns=['Plano','Tarifa'])
       st.dataframe(fat_val.style.set_precision(2))
