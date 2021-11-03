@@ -15,7 +15,7 @@ if upload :
   fat=pega_fatura(upload)
   with st.form(key='my_form'):
     try:
-      num_select = st.selectbox('Qual número deseja consultar?', fat.EQPTO_ORIG())
+      num_select = st.selectbox('Qual número deseja consultar?', fat.EQPTO_ORIG.unique())
       submit_button = st.form_submit_button(label='Aplicar')
     except:
       num_select = st.selectbox('Qual número deseja consultar?', fat.Ass_B.unique())
